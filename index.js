@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const connectToMongo = require('./db');
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+connectToMongo();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+var express = require('express');
+var cors = require('cors')
+var app = express()
+ 
+app.use(cors())
+
+app.use(express.json())
+
+const port = 5000;
+
+app.use('/api/auth',require('./routes/auth'))
+
+app.listen(port,()=>{
+    console.log(`example app listening on port ${port}`)
+})
