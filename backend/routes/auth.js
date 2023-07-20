@@ -14,6 +14,7 @@ router.post(
     body("username").isLength({ min: 3 }),
     body("email").isEmail(),
     body("password").isLength({ min: 5 }),
+    body("role").isString()
   ],
 
   async (req, res) => {
@@ -38,18 +39,19 @@ router.post(
         username: req.body.username,
         password: secPass,
         email: req.body.email,
+        role:req.body.role
       });
       const data = {
         user:{
             id:user.id,
         }
       }
-      const authtoken = jwt.sign(data, JWT_SECRET)
+      const authtoken = jwt.sign(data, JWT_SECRET) 
       success = true
-      res.json({success,authtoken});
+      return res.json({success,authtoken});
     } catch (err) {
       console.log(err);
-      res.status(500).json("internal server error")
+      return res.status(500).json("internal server error")
     }
   }
 );
@@ -58,17 +60,17 @@ router.post(
     '/login',
     [
       body("email").isEmail(),
-      body("password").exists(),
+      body("password").exists(), 
     ],
   
-    async (req, res) => {
+    async (req, res) => { 
       try {
         var success = false
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() });
         }
-        const {email,password} = req.body;
+        const {email,password} = req.body; 
         let user = await User.findOne({email});
         if (!user) {
           return res
@@ -90,21 +92,21 @@ router.post(
         }
         const authtoken = jwt.sign(data, JWT_SECRET)
         success = true;
-        res.json({success,authtoken});
+        return res.json({success,authtoken});
       } catch (err) {
         console.log(err);
-        res.status(500).json("internal server error")
+        return res.status(500).json("internal server error")
       }
     }
-  );
+  ); 
   router.get('/getuser',fetchUser,async(req,res)=>{
     try {
         const userId = req.user.id;
         const user = await User.findById(userId);
-        res.send(user)
+        return res.send(user)
     } catch (err) {
         console.log(err);
-        res.status(500).json("internal server error")
+        return res.status(500).json("internal server error")
     }
   })
 

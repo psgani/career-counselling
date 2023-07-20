@@ -1,9 +1,10 @@
 import React from 'react'
 import {useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import "../App.css";
 
 const Register = () => {
-    const [credentials,setCredentials] = useState({username:"",email:"",password:""});
+    const [credentials,setCredentials] = useState({username:"",email:"",password:"",role:"student"});
     let navigate = useNavigate();
     const onSubmit = async(e)=>{   
         e.preventDefault() 
@@ -12,9 +13,9 @@ const Register = () => {
         headers:{
           'Content-Type':'application/json'
         },
-        body:JSON.stringify({username:credentials.username,email: credentials.email,password: credentials.password})
+        body:JSON.stringify({username:credentials.username,email: credentials.email,password: credentials.password,role:credentials.role})
       })
-      
+      console.log(credentials);
       const json = await response.json()
       
       console.log(json)
@@ -28,16 +29,17 @@ const Register = () => {
     }
 
       const onChange = (e)=>{
+        
         setCredentials({...credentials,[e.target.name]:e.target.value})
       }
     
   return (
     <>
-       
+        <div class="register_container">
         <form className = 'container my-5' onSubmit={onSubmit}>
         <h1>Create new Account</h1>
-            <div className="mb-3">
-                <label htmlFor="name" className="form-label my-2">Username</label>
+            <div className="mb-3 x">
+                <label htmlFor="name" className="form-label my-2">Username (username must be unique)</label>
                 <input name = 'username' type = 'text' className="form-control" id="username" value={credentials.username} onChange = {onChange}/>
             </div>
             <div className="mb-3">
@@ -49,9 +51,18 @@ const Register = () => {
                 <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                 <input name = 'password' type="password" className="form-control" id="exampleInputPassword1" value={credentials.password} onChange = {onChange}/>
             </div>
-
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <div className='role_c'>
+            <label htmlFor="role">Role:</label>
+            <select name="role" onChange={onChange} className='mx-2 py-1'>
+              <option value="Student">Student</option>
+              <option value="Tutor">Tutor</option>
+            </select>
+            
+            <button type="submit" className="btn btn-primary my-2">Submit</button>
+            </div>
         </form>
+        
+        </div>
     </>
   )
 }

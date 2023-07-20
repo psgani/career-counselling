@@ -3,7 +3,8 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-      HIiii
+      Hiiii
+     {/* <button class="home_login_b" */}
     </div>
   )
 }

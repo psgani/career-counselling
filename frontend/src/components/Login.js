@@ -17,10 +17,10 @@ const Login = () => {
       body:JSON.stringify({email: credentials.email,password: credentials.password})
     })
     const json = await response.json()
-    console.log(json)
+    // console.log(json)
     if(json.success){
       localStorage.setItem('token',json.authtoken)
-      navigate("/");
+      navigate("/homepage");
     }
     else{
         alert("please enter correct credentials")
@@ -29,6 +29,8 @@ const Login = () => {
   const onChange = (e)=>{
     setCredentials({...credentials,[e.target.name]:e.target.value})
   }
+
+
   return (
     <>
     <center>
@@ -41,12 +43,7 @@ const Login = () => {
                 <label className="gmail"><b>Password</b></label><br/>
                 <input className = 'login_password' name = "password" type="password" value={credentials.password} placeholder="" onChange = {onChange}/><br/>
                 <div className="forgot"><a href="/" className="forgot" >forgot password</a></div>
-                <label className="youare"><b>You are a</b></label>
-                <select name="Role" id="Role" className="Role">
-                    <option value="Student">Student</option>
-                    <option value="Tutor">Tutor</option>
-                    <option value="Admin">Admin</option>
-                </select><br/>
+                
                 <button className="login_b" >Login</button><br/>
                 Don't have an account? <Link to="/createuser" className="cna" >Create new Account</Link>
             </form>
