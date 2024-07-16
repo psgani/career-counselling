@@ -6,7 +6,8 @@ Career Counselling is a web application built using the MERN stack (MongoDB, Exp
 
 ## Features
 
- -- User Roles: Student and Tutor
+ ### User Roles: Student and Tutor
+ --  Displays the count of total number users registered, total number questions asked, total number of responses and total number of blogs posted.
  - Student:
    - Post both questions and answers.
    - Search for any specific keyword in the questions answers section.
@@ -14,6 +15,7 @@ Career Counselling is a web application built using the MERN stack (MongoDB, Exp
    - Post answers to career-related questions
  - Blogs
    - Users can post blogs to share their career achievements
+
 
 
 ## Installation
@@ -70,4 +72,13 @@ The application should now be running on http://localhost:3000.
    - navigate to find answers page to find questions and related answers.
    - Use the search box to search for a particular question or answer.
    - View answers for questions and post new questions in the box provided below and click on submit to submit your questions.
+ ## Screenshots
+![Screenshot (60)](https://github.com/user-attachments/assets/4d4f36b4-a76c-421d-ba72-f39b8f8fcf7e)
+![Screenshot (61)](https://github.com/user-attachments/assets/20849d55-8573-4b03-9f3b-0bae937c4bdd)
+
+![Screenshot (62)](https://github.com/user-attachments/assets/ad2bc663-4142-4503-a396-d5eee329aac8)
+![Screenshot (64)](https://github.com/user-attachments/assets/f72aface-99b5-480e-8ecd-76add291680f)
+![Screenshot (66)](https://github.com/user-attachments/assets/b066cfa0-d221-44a5-9e14-0ad827d48f02)
+
+![Screenshot (68)](https://github.com/user-attachments/assets/913b247e-a7f4-40b5-80e4-c85e25281ed4)
 
