@@ -44,7 +44,7 @@ const Navbar = () => {
           'auth-token': localStorage.getItem('token'),
         },
       };
-      const res = await axios.get('http://localhost:5000/api/auth/getUser', config);
+      const res = await axios.get('https://career-counselling-delta.vercel.app/api/auth/getUser', config);
       const user = res.data.username;
       setuser(user);
     } catch (error) {
