@@ -7,7 +7,7 @@ const BlogState = (props) => {
 
   const getBlogs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/blog/getblogs');
+      const response = await axios.get('https://career-counselling-delta.vercel.app/api/blog/getblogs');
       const fetchedBlogs = response.data.output;
       setBlogs(fetchedBlogs);
     } catch (error) {
